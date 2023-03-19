@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:57:14 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/18 14:57:27 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/19 18:22:19 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
 {
-	(void) copy;
 	std::cout << "\e[0;33mCopy Constructor called of BitcoinExchange\e[0m" << std::endl;
+	(void) copy;
 }
 
 // Operators
