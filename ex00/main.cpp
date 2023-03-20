@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:41:47 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/19 18:19:33 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/20 12:01:07 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,14 @@
 #include <sstream>
 #include <ctime>
 
-void checkDate()
-{
-}
-void checkValue()
-{
-}
 int main(int argc, char const *argv[])
 {
-	float															value;
-	size_t															pos;
-	std::string														token;
-	std::string														delimiter;
-	std::string														exchange_rate;
+	float														value;
+	int															count;
+	size_t														pos;
+	std::string													token;
+	std::string													delimiter;
+	std::string													exchange_rate;
 	std::map<std::string, float, std::greater<std::string> >	myMap;
 	(void)argc;
 	(void)argv;
@@ -42,14 +37,31 @@ int main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	}
 	pos = 0;
+	count = 0;
 	delimiter = ",";
 	while (std::getline(file, exchange_rate))
 	{
+		// std::cout << "line =====>  " << exchange_rate << std::endl;
+		if ((pos = exchange_rate.find(delimiter)) == std::string::npos)
+			std::cout << "invalid line" << std::endl;
 		while ((pos = exchange_rate.find(delimiter)) != std::string::npos)
 		{
+			/*split line*/
 			token = exchange_rate.substr(0, pos);
-			if (token == "date")
+			exchange_rate.erase(0, pos + delimiter.length());
+			// std::cout << "token ====>" << token << std::endl;
+			// std::cout << "exchange_rate ====>" << exchange_rate << std::endl;
+
+			/*check header*/
+			if (count == 0 && token == "date" && exchange_rate == "exchange_rate")
 				break;
+			if (count == 0 && (token != "date" || exchange_rate != "exchange_rate"))
+			{
+				std::cout << "invalid header" << token << " " << exchange_rate << std::endl;
+				break ;
+			}
+
+			/*check date*/
 			std::tm date = {};
 			std::istringstream ss(token);
 			ss >> std::get_time(&date, "%Y-%m-%d-%h");
@@ -75,10 +87,14 @@ int main(int argc, char const *argv[])
 				if (day > 31)
 					std::cout << "invalid date" << token << std::endl;
 			}
-			exchange_rate.erase(0, pos + delimiter.length());
+
+			/*check value*/
+			if (!exchange_rate.empty() && exchange_rate.at(0) == '.')
+				std::cout << "invalid value" << exchange_rate << std::endl;
 			try
 			{
 				value = std::stof(exchange_rate);
+				// std::cout << "value ====>" << value << std::endl;
 				if (value < 0)
 					std::cout << "invalid value" << value << std::endl;
 			}
@@ -86,9 +102,11 @@ int main(int argc, char const *argv[])
 			{
 				std::cerr << "invalid value" << std::endl;
 			}
-			
+
+			/*insert into map*/
 			myMap.insert(std::make_pair(token, value));
 		}
+		count++;
 	}
 
 	// for (std::map<std::string, float>::iterator it = myMap.begin(); it != myMap.end(); it++)
