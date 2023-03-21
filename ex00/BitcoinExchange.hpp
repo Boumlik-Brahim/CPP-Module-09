@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:57:34 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/19 18:20:04 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:19:16 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # include <iostream>
 # include <string>
+# include <fstream>
+# include <map>
+# include <cstdlib>
 
 class BitcoinExchange
 {
 	private:
+		// float														val;
+		// std::string													date;
+		// std::map<std::string, float, std::greater<std::string> >	myMap;
 
 	public:
 		// Constructors
