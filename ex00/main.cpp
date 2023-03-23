@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:41:47 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/22 15:32:20 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/23 10:28:10 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int main(int argc, char const *argv[])
 	exchange.read_data();
 	/*read input*/
 	exchange.read_input();
-	return 0;
+	return (0);
 }
