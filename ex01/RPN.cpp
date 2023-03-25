@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:24:40 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/23 10:27:34 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/25 18:11:48 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ int RPN::is_token_operand(char token)
 void RPN::rpn()
 {
 	std::string::iterator	it;
-	float					res;
-	int 					a;
-	int 					b;
-	int 					val;
-	float 					fval;
+	int 					a = 0;
+	int 					b = 0;
+	int 					val = 0;
+	float					res = 0;
+	float 					fval = 0;
 
 	for (it = mathematical_expression.begin(); it != mathematical_expression.end(); it++)
 	{
-		if (!is_token_operator(*it))
+		if (!is_token_operator(*it) && my_stak.size() >= 2)
 		{
 			a = my_stak.top();
 			my_stak.pop();
@@ -71,8 +71,15 @@ void RPN::rpn()
 			else if (*it == '*')
 				res = b * a;
 			else if (*it == '/')
+			{
+				if(a == 0)
+				{
+					std::cout << "Error" << std::endl;
+					return ;
+				}
 				res = b / a;
-			my_stak.push(res); 
+			}
+			my_stak.push(res);
 		}
 		else if (!is_token_operand(*it))
 		{
@@ -83,11 +90,15 @@ void RPN::rpn()
 		else if (*it != ' ')
 		{
 			std::cout << "Error" << std::endl;
-			break ;
+			return ;
 		}
 	}
-	if (!my_stak.empty())
-		std::cout << my_stak.top() << std::endl;
+	if (my_stak.size() != 1	)
+	{
+		std::cout << "Error" << std::endl;
+		return ;
+	}
+	std::cout << my_stak.top() << std::endl;
 }
 
 // Destructor

@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:57:34 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/22 15:22:20 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/25 17:06:31 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <iostream>
 # include <string>
 # include <fstream>
-# include <map>
 # include <cstdlib>
+# include <map>
 
 class BitcoinExchange
 {
@@ -40,7 +40,7 @@ class BitcoinExchange
 		int			is_digit(std::string str);
 		int			is_digit_point(std::string str);
 		std::string	strtrim(std::string str);
-		int			check_date(std::string token_date);
+		int			check_date();
 		int			check_value(std::string value);
 		void		read_data();
 		void		read_input();

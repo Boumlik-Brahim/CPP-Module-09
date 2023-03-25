@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:45:01 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/24 21:45:40 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/25 14:06:58 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int main(int argc, char const *argv[])
 	clock_t end_deque = clock();
 	double elapsed_time_deque = double(end_deque - start_deque) / CLOCKS_PER_SEC * 1000000;
 
-	std::cout << "Time to process a range of	" << v1.size() << " elements with std::vector<int> v1 : " << std::fixed << std::setprecision(5) << elapsed_time_vector << " us"<< std::endl;
-	std::cout << "Time to process a range of	" << v2.size() << " elements with std::deque<int> v2 : " << std::fixed << std::setprecision(5) << elapsed_time_deque << " us"<< std::endl;
+	std::cout << "Time to process a range of	" << v1.size() << " elements with std::vector<int> v1 : " << elapsed_time_vector << " us"<< std::endl;
+	std::cout << "Time to process a range of	" << v2.size() << " elements with std::deque<int> v2 : " << elapsed_time_deque << " us"<< std::endl;
 
 	return (0);
 }
