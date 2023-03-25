@@ -35,6 +35,10 @@ The basic syntax to initialize a C++ STL map is as follows:
 
 ![screenshot](/assets/mapinit.png)
 
+### Reverse Polish Notation:
+
+Reverse Polish notation (RPN) is a method for conveying mathematical expressions without the use of separators such as brackets and parentheses. In this notation, the operators follow their operands, hence removing the need for brackets to define evaluation priority. The operation is read from left to right but execution is done every time an operator is reached, and always using the last two numbers as the operands. This notation is suited for computers and calculators since there are fewer characters to track and fewer operations to execute.
+
 ### stack:
 
 In C++, a stack is a container adapter that provides a LIFO (Last-In-First-Out) data structure. It can be thought of as a stack of plates where the last plate added to the stack is the first one to be removed.
