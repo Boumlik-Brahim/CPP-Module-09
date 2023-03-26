@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:45:01 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/26 17:20:42 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/26 22:07:53 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main(int argc, char const *argv[])
 {
+	PmergeMe			obj;
 	std::vector<int>	v1;
 	std::deque<int>		v2;
-	PmergeMe			obj;
 	std::string			str;
 	int					val;
 
