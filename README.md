@@ -35,12 +35,38 @@ The basic syntax to initialize a C++ STL map is as follows:
 
 ![screenshot](/assets/mapinit.png)
 
-### Reverse Polish Notation:
-
-Reverse Polish notation (RPN) is a method for conveying mathematical expressions without the use of separators such as brackets and parentheses. In this notation, the operators follow their operands, hence removing the need for brackets to define evaluation priority. The operation is read from left to right but execution is done every time an operator is reached, and always using the last two numbers as the operands. This notation is suited for computers and calculators since there are fewer characters to track and fewer operations to execute.
-
 ### stack:
 
 In C++, a stack is a container adapter that provides a LIFO (Last-In-First-Out) data structure. It can be thought of as a stack of plates where the last plate added to the stack is the first one to be removed.
 
-Elements are pushed onto the stack using the push() function, and the top element is accessed using the top() function. Elements are popped from the stack using the pop() function. 
+Elements are pushed onto the stack using the push() function, and the top element is accessed using the top() function. Elements are popped from the stack using the pop() function.
+
+### Reverse Polish Notation:
+
+Reverse Polish notation (RPN) is a method for conveying mathematical expressions without the use of separators such as brackets and parentheses. In this notation, the operators follow their operands, hence removing the need for brackets to define evaluation priority. The operation is read from left to right but execution is done every time an operator is reached, and always using the last two numbers as the operands. This notation is suited for computers and calculators since there are fewer characters to track and fewer operations to execute.
+
+### vector:
+
+Vectors are the same as dynamic arrays with the ability to resize itself automatically when an element is inserted or deleted, with their storage being handled automatically by the container. Vector elements are placed in contiguous storage so that they can be accessed and traversed using iterators. In vectors, data is inserted at the end. Inserting at the end takes differential time, as sometimes the array may need to be extended. Removing the last element takes only constant time because no resizing happens. Inserting and erasing at the beginning or in the middle is linear in time.
+
+### deque:
+
+Double-ended queues are sequence containers with the feature of expansion and contraction on both ends. They are similar to vectors, but are more efficient in case of insertion and deletion of elements. Unlike vectors, contiguous storage allocation may not be guaranteed. 
+Double Ended Queues are basically an implementation of the data structure double-ended queue. A queue data structure allows insertion only at the end and deletion from the front. This is like a queue in real life, wherein people are removed from the front and added at the back. Double-ended queues are a special case of queues where insertion and deletion operations are possible at both the ends. The functions for deque are same as vector, with an addition of push and pop operations for both front and back.
+
+### Insertion Sort Algorithm:
+
+![screenshot](/assets/array.png)
+![screenshot](/assets/step1IS.png)
+![screenshot](/assets/step2IS.png)
+![screenshot](/assets/step3IS.png)
+![screenshot](/assets/step4IS.png)
+
+### Merge Sort Algorithm:
+
+![screenshot](/assets/step1MS.png)
+![screenshot](/assets/step2MS.png)
+![screenshot](/assets/step3MS.png)
+![screenshot](/assets/step4MS.png)
+![screenshot](/assets/step5MS.png)
+![screenshot](/assets/step6MS.png)

@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:32:01 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/24 21:46:52 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/26 15:19:14 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,38 +85,31 @@ int PmergeMe::checkdup(std::vector<int> &v)
 
 /*------------------------------Vector----------------------------------*/
 
-void PmergeMe::mergeVector(std::vector<int> &v, int start, int half, int size)
+void PmergeMe::mergeSortVector(std::vector<int> &v, int start, int half, int size)
 {
-	int n1 = half - start + 1;
-	int n2 = size - half; 
-
-	std::vector<int> L(n1);
-	std::vector<int> M(n2);
-	
-	for (int i = 0; i < n1; i++)
-	{
-		L.at(i) = v.at(start + i);
-	}
-	for (int j = 0; j < n2; j++)
-	{
-		M.at(j) = v.at(half + 1 + j);
-	}
-
 	int i, j, k;
+	int n1 = half - start + 1;
+	int n2 = size - half;
+	std::vector<int> tmpvec1(n1);
+	std::vector<int> tmpvec2(n2);
+
+	for (int i = 0; i < n1; i++)
+		tmpvec1.at(i) = v.at(start + i);
+	for (int j = 0; j < n2; j++)
+		tmpvec2.at(j) = v.at(half + 1 + j);
 	i = 0;
 	j = 0;
 	k = start;
-
 	while (i < n1 && j < n2)
 	{
-		if (L.at(i) <= M.at(j))
+		if (tmpvec1.at(i) <= tmpvec2.at(j))
 		{
-			v.at(k) = L.at(i);
+			v.at(k) = tmpvec1.at(i);
 			i++;
 		}
 		else
 		{
-			v.at(k) = M.at(j);
+			v.at(k) = tmpvec2.at(j);
 			j++;
 		}
 		k++;
@@ -124,40 +117,25 @@ void PmergeMe::mergeVector(std::vector<int> &v, int start, int half, int size)
 
 	while (i < n1)
 	{
-		v.at(k) = L.at(i);
+		v.at(k) = tmpvec1.at(i);
 		i++;
 		k++;
 	}
 
 	while (j < n2)
 	{
-		v.at(k) = M.at(j);
+		v.at(k) = tmpvec2.at(j);
 		j++;
 		k++;
 	}
 }
 
-void PmergeMe::mergesortVector(std::vector<int> &v, int start, int size)
-{
-	if (start < size)
-	{
-		int half = start + (size - start) / 2;
-
-		mergesortVector(v, start, half);
-		mergesortVector(v, half + 1, size);
-
-		mergeVector(v, start, half, size);
-	}
-}
-
-
-void PmergeMe::insertionsortVector(std::vector<int> &v, size_t size)
+void PmergeMe::insertionSortVector(std::vector<int> &v, size_t size)
 {
 	for (size_t i = 1; i < size; i++)
 	{
 		int key = v.at(i);
 		int j = i - 1;
-
 		while (j >= 0 && v.at(j) > key)
 		{
 			v.at(j + 1) = v.at(j);
@@ -173,49 +151,43 @@ void PmergeMe::sortVector(std::vector<int> &v, int start, int size)
 	{
 		int half = (start + size) / 2;
 		sortVector(v, start, half);
-		sortVector(v, half + 1, size);	
-		mergesortVector(v, start, size - 1);
+		sortVector(v, half + 1, size);
+		mergeSortVector(v, start, half, size - 1);
 	}
 	else
-		insertionsortVector(v, size);
+		insertionSortVector(v, size);
 }
 
 /*------------------------------Vector----------------------------------*/
 
 /*------------------------------Deque-----------------------------------*/
 
-void PmergeMe::mergeDeque(std::deque<int> &v, int start, int half, int size)
+void PmergeMe::mergeSortDeque(std::deque<int> &v, int start, int half, int size)
 {
+	int i, j, k;
 	int n1 = half - start + 1;
 	int n2 = size - half;
+	std::deque<int> tmpdeque1(n1);
+	std::deque<int> tmpdeque2(n2);
 
-	std::deque<int> L(n1);
-	std::deque<int> M(n2);
-	
 	for (int i = 0; i < n1; i++)
-	{
-		L.at(i) = v.at(start + i);
-	}
+		tmpdeque1.at(i) = v.at(start + i);
 	for (int j = 0; j < n2; j++)
-	{
-		M.at(j) = v.at(half + 1 + j);
-	}
+		tmpdeque2.at(j) = v.at(half + 1 + j);
 
-	int i, j, k;
 	i = 0;
 	j = 0;
 	k = start;
-
 	while (i < n1 && j < n2)
 	{
-		if (L.at(i) <= M.at(j))
+		if (tmpdeque1.at(i) <= tmpdeque2.at(j))
 		{
-			v.at(k) = L.at(i);
+			v.at(k) = tmpdeque1.at(i);
 			i++;
 		}
 		else
 		{
-			v.at(k) = M.at(j);
+			v.at(k) = tmpdeque2.at(j);
 			j++;
 		}
 		k++;
@@ -223,39 +195,24 @@ void PmergeMe::mergeDeque(std::deque<int> &v, int start, int half, int size)
 
 	while (i < n1)
 	{
-		v.at(k) = L.at(i);
+		v.at(k) = tmpdeque1.at(i);
 		i++;
 		k++;
 	}
-
 	while (j < n2)
 	{
-		v.at(k) = M.at(j);
+		v.at(k) = tmpdeque2.at(j);
 		j++;
 		k++;
 	}
 }
 
-void PmergeMe::mergesortDeque(std::deque<int> &v, int start, int size)
-{
-	if (start < size)
-	{
-		int half = start + (size - start) / 2;
-
-		mergesortDeque(v, start, half);
-		mergesortDeque(v, half + 1, size);
-
-		mergeDeque(v, start, half, size);
-	}
-}
-
-void PmergeMe::insertionsortDeque(std::deque<int> &v, size_t size)
+void PmergeMe::insertionSortDeque(std::deque<int> &v, size_t size)
 {
 	for (size_t i = 1; i < size; i++)
 	{
 		int key = v.at(i);
 		int j = i - 1;
-
 		while (j >= 0 && v.at(j) > key)
 		{
 			v.at(j + 1) = v.at(j);
@@ -271,11 +228,11 @@ void PmergeMe::sortDeque(std::deque<int> &v, int start, int size)
 	{
 		int half = (start + size) / 2;
 		sortDeque(v, start, half);
-		sortDeque(v, half + 1, size);	
-		mergesortDeque(v, start, size - 1);
+		sortDeque(v, half + 1, size);
+		mergeSortDeque(v, start, half, size - 1);
 	}
 	else
-		insertionsortDeque(v, size);
+		insertionSortDeque(v, size);
 }
 
 /*------------------------------Deque-----------------------------------*/

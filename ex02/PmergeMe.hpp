@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:32:08 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/24 21:57:24 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/26 13:56:54 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ class PmergeMe
 		int is_digit(std::string str);
 		int checkSort(std::vector<int> &v);
 		int checkdup(std::vector<int> &v);
-		
-		void mergeVector(std::vector<int> &v, int start, int half, int size);
-		void mergesortVector(std::vector<int> &v, int start, int size);
-		void insertionsortVector(std::vector<int> &v, size_t size);
+
+		void mergeSortVector(std::vector<int> &v, int start, int half, int size);
+		void insertionSortVector(std::vector<int> &v, size_t size);
 		void sortVector(std::vector<int> &v, int start, int size);
 
-		void mergeDeque(std::deque<int> &v, int start, int half, int size);
-		void mergesortDeque(std::deque<int> &v, int start, int size);
-		void insertionsortDeque(std::deque<int> &v, size_t size);
+		void mergeSortDeque(std::deque<int> &v, int start, int half, int size);
+		void insertionSortDeque(std::deque<int> &v, size_t size);
 		void sortDeque(std::deque<int> &v, int start, int size);
 
 		// Destructor

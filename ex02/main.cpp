@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:45:01 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/25 14:06:58 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/26 14:42:13 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
 	clock_t end_vector = clock();
 	double elapsed_time_vector = double(end_vector - start_vector) / CLOCKS_PER_SEC * 1000000;
 	obj.printVector(v1, 'a');
-	
+
 	clock_t start_deque = clock();
 	for (int i = 1; i < argc; i++)
 		v2.push_back(atoi(argv[i]));
