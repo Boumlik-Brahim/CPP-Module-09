@@ -6,7 +6,7 @@
 /*   By: bbrahim <bbrahim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:45:01 by bbrahim           #+#    #+#             */
-/*   Updated: 2023/03/26 14:42:13 by bbrahim          ###   ########.fr       */
+/*   Updated: 2023/03/26 17:20:42 by bbrahim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,26 @@ int main(int argc, char const *argv[])
 	std::vector<int>	v1;
 	std::deque<int>		v2;
 	PmergeMe			obj;
+	std::string			str;
 	int					val;
 
 	clock_t start_vector = clock();
 	for (int i = 1; i < argc; i++)
 	{
+		str = argv[i];
+		if (str.size() == 10)
+		{
+			if (str.compare("2147483647") > 0)
+			{
+				std::cout << "Error" << std::endl;
+				return (EXIT_FAILURE);
+			}
+		}
+		else if (str.size() > 10)
+		{
+			std::cout << "Error" << std::endl;
+			return (EXIT_FAILURE);
+		}
 		val = atoi(argv[i]);
 		if (!obj.is_digit(argv[i]) || val < 0)
 		{
